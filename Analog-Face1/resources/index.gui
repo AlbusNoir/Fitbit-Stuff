@@ -1,0 +1,24 @@
+<svg class="background">
+  <!--Background-->
+  <image id="background" href="Versa/versa_bg.png"/>
+  
+  <!--Clock hands-->
+    <g id="secs" transform="translate(50%,50%)">
+      <rect x="0" y="-110" width="2" height="110" fill="#00ffaa"/>
+  </g>
+  
+  <g id="mins" transform="translate(50%,50%)">
+      <rect x="-1" y="-110" width="3" height="110" fill="#00b7ff"/>
+  </g>
+  
+  <g id="hours" transform="translate(50%,50%)">
+      <rect x="-3" y="-105" width="6" height="110" fill="#00b7ff"/>
+  </g>
+  
+  <!--Layer1-->
+  <image id="layer1" href="Versa/versa_layer1.png"/>
+
+  <!--Layer2-->
+  <image id="layer2" href="Versa/versa_layer2.png"/>
+  
+</svg>
