@@ -11,3 +11,17 @@
   fill:white;
   text-anchor:end;
 }
+
+  .date{
+    font-size:20;
+    font-family: Seville-Bold;
+    fill: #bc2b2b;
+    text-anchor:start;
+  }
+
+.date-digit{
+  font-size:20;
+  font-family: Seville-Bold;
+  fill: #bc2b2b;
+  text-anchor:end;
+}

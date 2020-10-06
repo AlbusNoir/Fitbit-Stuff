@@ -17,6 +17,11 @@
       <rect x="-3" y="-105" width="6" height="110" fill="#00b7ff"/>
   </g>
   
+  <!--Date-->
+  <image href="Versa/versa_date.png"/>
+  <text id="dayname" x="58" y="102" class="date">THU</text>
+  <text id="date" x="57" y="102" class="date-digit">31</text>"
+  
   <!--Layer1-->
   <image id="layer1" href="Versa/versa_layer1.png"/>
 

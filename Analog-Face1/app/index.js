@@ -9,6 +9,16 @@ import {HeartRateSensor} from "heart-rate";  // update in package.json
 //Update every sec
 clock.granularity = "seconds";
 
+// date
+const dayname = document.getElementById("dayname");
+const date = document.getElementById("date");
+
+function setDay(val){
+  const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  dayname.text = ""+days[val];
+}
+
+
 //stats
 const stpValue = document.getElementById("stpValue");
 const flValue = document.getElementById("flValue");
@@ -260,8 +270,6 @@ function animateBattery(speed){
 }
 
 
-
-
 //update
 clock.ontick = evt =>{
   
@@ -270,6 +278,9 @@ clock.ontick = evt =>{
   const hours = d.getHours();
   
   const minutes = ("0" + d.getMinutes()).slice(-2); // append 0 so we can have 01 02 03 etc
+  
+  setDay(d.getDay());
+  date.text = d.getDate();
   
   // 24hr - 12hr toggle
   if(preferences.clockDisplay === "12h") {
