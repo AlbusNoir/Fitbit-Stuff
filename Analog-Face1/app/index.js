@@ -2,9 +2,40 @@ import document from "document";
 import clock from "clock";
 import {preferences} from "user-settings";
 import * as util from "../common/utils"
+import {today} from "user-activity";  // update in package.json
+import {battery} from "power";
+import {HeartRateSensor} from "heart-rate";  // update in package.json
 
 //Update every sec
 clock.granularity = "seconds";
+
+//stats
+const stpValue = document.getElementById("stpValue");
+const flValue = document.getElementById("flValue");
+const calValue = document.getElementById("calValue");
+const btValue = document.getElementById("btValue");
+
+function updateStats(){
+  // get today's stats or 0
+  stpValue.text = today.adjusted.steps || 0;
+  flValue.text = today.adjusted.elevationGain || 0;
+  calValue.text = today.adjusted.calories || 0;
+  btValue.text = Math.floor(battery.chargeLevel) + "%";
+}
+
+// heart rate
+let lastValueTimestamp = Date.now();
+const bpmValue = document.getElementById("bpmValue");
+bpmValue.text = "---";
+let hrm = new HeartRateSensor();
+hrm.onreading = function(){
+  // get current sensor val
+  bpmValue.text = hrm.heartRate;
+  lastValueTimestamp = Date.now();  // update stamp for next read
+}
+
+hrm.start();
+
 
 //analog vars
 const secHand = document.getElementById("secs");
@@ -124,6 +155,113 @@ function hoursToAngle(hours){
   hourHand.groupTransform.rotate.angle = hoursToAngle(hour);
 }
 
+
+// ANIMATIONS -> can be combined into one giant function
+// bigger number for speed = slower
+
+// steps
+const stepsIcon = document.getElementById("stepsIcon");
+animateSteps(500);
+function animateSteps(speed){
+  let frame = 1;
+  let frameCount = 2;
+  
+  setInterval(function(){
+    //load cur frame
+    stepsIcon.href = `Animations/Steps/step${frame}.png`;
+    
+    // increment
+    frame++;
+    // if frame exceeds count, repeat
+    if(frame > frameCount){
+      frame = 1;
+    }
+  }, speed)
+}
+
+// heart rate
+const bpmIcon = document.getElementById("bpmIcon");
+animateBPM(150);
+function animateBPM(speed){
+  let frame = 1;
+  let frameCount = 9;
+  
+  setInterval(function(){
+    //load cur frame
+    bpmIcon.href = `Animations/BPM/bpm${frame}.png`;
+    
+    // increment
+    frame++;
+    // if frame exceeds count, repeat
+    if(frame > frameCount){
+      frame = 1;
+    }
+  }, speed)
+}
+
+// calories
+const burnIcon = document.getElementById("burnIcon");
+animateCal(800);
+function animateCal(speed){
+  let frame = 1;
+  let frameCount = 2;
+  
+  setInterval(function(){
+    //load cur frame
+   burnIcon.href = `Animations/Calories/burn${frame}.png`;
+    
+    // increment
+    frame++;
+    // if frame exceeds count, repeat
+    if(frame > frameCount){
+      frame = 1;
+    }
+  }, speed)
+}
+
+// floors
+const floorsIcon = document.getElementById("floorsIcon");
+animateFloors(400);
+function animateFloors(speed){
+  let frame = 1;
+  let frameCount = 6;
+  
+  setInterval(function(){
+    //load cur frame
+    floorsIcon.href = `Animations/Floors/floors${frame}.png`;
+    
+    // increment
+    frame++;
+    // if frame exceeds count, repeat
+    if(frame > frameCount){
+      frame = 1;
+    }
+  }, speed)
+}
+
+// battery
+const batteryIcon = document.getElementById("batteryIcon");
+animateBattery(600);
+function animateBattery(speed){
+  let frame = 1;
+  let frameCount = 6;
+  
+  setInterval(function(){
+    //load cur frame
+    batteryIcon.href = `Animations/Battery/bt${frame}.png`;
+    
+    // increment
+    frame++;
+    // if frame exceeds count, repeat
+    if(frame > frameCount){
+      frame = 1;
+    }
+  }, speed)
+}
+
+
+
+
 //update
 clock.ontick = evt =>{
   
@@ -150,4 +288,6 @@ clock.ontick = evt =>{
   
   // set analog time
   updateClock();
+  //update steps & Floors
+  updateStats();
 }

@@ -1,12 +1,13 @@
-.background {
-  viewport-fill: fb-cyan;
+.stat-text{
+  font-size:25;
+  font-family: Seville-Regular;
+  fill: white;
+  text-anchor:start;
 }
 
-#demotext {
-  fill: black;
-  font-size: 32;
-  font-family: System-Regular;
-  font-weight: bold;
-  text-anchor: middle;
-  text-length: 99;
+.stat-number{
+  font-size:25;
+  font-family:Seville-Regular;
+  fill:white;
+  text-anchor:end;
 }

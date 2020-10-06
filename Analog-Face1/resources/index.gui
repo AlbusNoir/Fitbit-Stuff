@@ -40,8 +40,16 @@
   
   <!-- 2nd screen -->
   <svg id="screen2" x="0" y="-300" width="300" height="300">
-    <rect width="300" height="300" fill="red">
+    <rect width="300" height="300" fill="#0f0f0f">
+       <text x="30" y="50" class="stat-text">BATTERY</text><image id="batteryIcon" href="Animations/Battery/bt6.png" x="130" y="35" width="40" height="20"/><text id="btValue" x="270" y="50" class="stat-number">100%</text>
       
+      <text x="30" y="100" class="stat-text">STEPS</text><image id="stepsIcon" href="Animations/Steps/step1.png" x="130" y="85" width="40" height="20"/><text id="stpValue" x="270" y="100" class="stat-number">-----</text>
+      
+       <text x="30" y="150" class="stat-text">BPM</text><image id="bpmIcon" href="Animations/BPM/bpm6.png" x="130" y="135" width="40" height="20"/><text id="bpmValue" x="270" y="150" class="stat-number">---</text>
+      
+       <text x="30" y="200" class="stat-text">CAL</text><image id="burnIcon" href="Animations/Calories/burn1.png" x="130" y="185" width="40" height="20"/><text id="calValue" x="270" y="200" class="stat-number">-----</text>
+      
+       <text x="30" y="250" class="stat-text">FLOORS</text><image id="floorsIcon" href="Animations/Floors/floors6.png" x="130" y="235" width="40" height="20"/><text id="flValue" x="270" y="250" class="stat-number">-----</text>
     </rect>
     <!-- fly in. enabled by click. fade from 0 to 1(not visible to visible) move screen posY to viewable area-->
       <animate attributeName="opacity" begin="enable" to="1" from="0" dur="0.3"/>
