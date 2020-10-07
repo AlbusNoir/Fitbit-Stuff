@@ -1,0 +1,12 @@
+<svg class="background">
+  <image id="bgImg" href="BgImgs/bg.png"/>
+  <!-- Layer -->
+  <image id="bgImg" href="BgImgs/bglayer.png"/>
+  
+  <!-- Date time and time icons -->
+  <text class="dateText" id="dateDay" x="65" y="75">---</text>
+  <text class="dateText" id="dateDigit" x="135" y="75">--</text>
+  <text class="dateText" id="dateMon" x="235" y="75">---</text>
+  <image id="timeIcon" x="115" y="115" width="70" height="70" href="TimeImgs/placeHolder.png"/>
+  <text class="timeText" id="time" x="113" y="250">00:00</text>
+</svg>

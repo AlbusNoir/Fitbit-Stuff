@@ -1,0 +1,15 @@
+.timeText{
+  fill:white;
+}
+
+.dateText{
+  fill:white;
+}
+
+#dateDigit{
+  text-anchor:start;
+}
+
+#dateMon{
+  text-anchor:end;
+}
