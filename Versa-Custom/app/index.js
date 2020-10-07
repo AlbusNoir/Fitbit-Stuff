@@ -24,9 +24,7 @@ function setMon(val){
   dateMon.text = ""+months[val];
 }
 
-// sun and moon
-const sunIcon = document.getElementById("sunIcon");
-const moonIcon = document.getElementById("moonIcon");
+// timeIcon
 const timeIcon = document.getElementById("timeIcon")
 
 // Update the <text> element every tick with the current time
