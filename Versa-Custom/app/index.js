@@ -1,12 +1,19 @@
+/*
+KSEGO2020
+*/
+
 import clock from "clock";
 import document from "document";
 import { preferences } from "user-settings";
 import * as util from "../common/utils";
+import {today} from "user-activity";
+import {battery} from "power";
+import {HeartRateSensor} from "heart-rate";
 
-// Update the clock every minute
-clock.granularity = "minutes";
+// Update the clock every second
+clock.granularity = "seconds";
 
-// Get a handle on the <text> element
+// time
 const time = document.getElementById("time");
 
 // date
@@ -27,7 +34,60 @@ function setMon(val){
 // timeIcon
 const timeIcon = document.getElementById("timeIcon")
 
-// Update the <text> element every tick with the current time
+// handle stats screen
+const btn = document.getElementById("btn");
+const screen2 = document.getElementById("screen2");
+
+btn.onclick = function(){
+  toggle(screen2);
+}
+
+// toggle
+function toggle(element){
+  element.animate("enable");
+}
+
+// stats
+const stepValue = document.getElementById("stepValue");
+const batValue = document.getElementById("batValue");
+const calValue = document.getElementById("calValue");
+const batIcon = document.getElementById("batIcon");
+
+function updateStats(){
+  // get stats or 0
+  stepValue.text = today.adjusted.steps || 0;
+  batValue.text = Math.floor(battery.chargeLevel) + "%";
+  calValue.text = today.adjusted.calories || 0;
+  
+  // change batIcon based on chargeLevel
+  if (battery.chargeLevel >= 90) {
+    batIcon.href = "StatsImgs/battery/btFull.png";
+  } else if (battery.chargeLevel >= 60 && battery.chargeLevel <= 89){
+    batIcon.href = "StatsImgs/battery/btMed1.png";
+  } else if (battery.chargeLevel >= 30 && battery.chargeLevel <= 59){
+    batIcon.href = "StatsImgs/battery/btMed2.png";
+  } else if (battery.chargeLevel >= 10 && battery.chargeLevel <= 29){
+    batIcon.href = "StatsImgs/battery/btLow.png";
+  } else {
+    batIcon.href = "StatsImgs/battery/btCrit.png";
+  }
+}
+
+// hr
+let lastValueTimestamp = Date.now();
+const bpmValue = document.getElementById("bpmValue");
+bpmValue.text = "---";
+let hrm = new HeartRateSensor();
+hrm.onreading = function(){
+  // get cur sensor val
+  bpmValue.text = hrm.heartRate;
+  lastValueTimestamp = Date.now(); // update for next read
+}
+
+hrm.start();
+
+
+// Update the every tick with the current time
 clock.ontick = (evt) => {
   let today = evt.date;
   let hours = today.getHours();
@@ -52,5 +112,8 @@ clock.ontick = (evt) => {
   } else {
     timeIcon.href = "TimeImgs/moonIcon.png";
   }
+  
+  // update stats
+  updateStats();
   
 }

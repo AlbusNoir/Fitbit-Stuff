@@ -1,3 +1,5 @@
+<!--KSEGO2020-->
+
 <svg class="background">
   <image id="bgImg" href="BgImgs/bg.png"/>
   <!-- Layer -->
@@ -9,4 +11,27 @@
   <text class="dateText" id="dateMon" x="235" y="75">---</text>
   <image id="timeIcon" x="115" y="115" width="70" height="70" href="TimeImgs/placeHolder.png"/>
   <text class="timeText" id="time" x="113" y="250">00:00</text>
+  
+  <!-- Stats screen -->
+  <!-- add during testing: fill="red" fill-opacity="0.2" -->
+  <rect id="btn" x="110" y="110" width="80" height="80" fill-opacity="0" pointer-events="visible"/>
+  <!-- 2nd screen -->
+  <svg id="screen2" x="0" y="-300" width="300" height="300">
+    <rect width="300" height="300" fill="#0f0f0f">
+       <text x="30" y="50" class="stat-text">BATTERY</text><image id="batIcon" href="StatsImgs/battery/btFull.png" x="145" y="30" width="60" height="25"/><text id="batValue" x="270" y="50" class="stat-number">100%</text>
+      
+      <text x="30" y="100" class="stat-text">STEPS</text><image id="stepIcon" href="StatsImgs/steps/step.png" x="160" y="80" width="30" height="20"/><text id="stepValue" x="270" y="100" class="stat-number">-----</text>
+      
+       <text x="30" y="150" class="stat-text">BPM</text><image id="bpmIcon" href="StatsImgs/heartbeat/bpm.png" x="160" y="130" width="30" height="20"/><text id="bpmValue" x="270" y="150" class="stat-number">---</text>
+      
+       <text x="30" y="200" class="stat-text">CAL</text><image id="burnIcon" href="StatsImgs/calories/burn.png" x="160" y="180" width="30" height="20"/><text id="calValue" x="270" y="200" class="stat-number">-----</text>
+    </rect>
+    <!-- fly in. enabled by click. fade from 0 to 1(not visible to visible) move screen posY to viewable area-->
+      <animate attributeName="opacity" begin="enable" to="1" from="0" dur="0.3"/>
+      <animate attributeName="y" begin="enable" to="0" from="-300" dur="0.3"/>
+
+      <!-- fly out. opposite of fly in-->
+      <animate attributeName="opacity" begin="enable+10" to="0" from="1" dur="0.5"/>
+      <animate attributeName="y" begin="enable+10" to="-300" from="0" dur="0.5"/>
+  </svg>
 </svg>

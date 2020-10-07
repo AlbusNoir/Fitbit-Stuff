@@ -1,3 +1,4 @@
+/*KSEGO2020*/
 .timeText{
   fill:white;
 }
@@ -11,5 +12,17 @@
 }
 
 #dateMon{
+  text-anchor:end;
+}
+
+.stat-text{
+  font-size:25;
+  fill:white;
+  text-anchor:start;
+}
+
+.stat-number{
+  font-size:25;
+  fill:white;
   text-anchor:end;
 }
