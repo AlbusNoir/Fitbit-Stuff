@@ -5,7 +5,7 @@
   "fitbit": {
     "appUUID": "c36dd70f-d8cb-4c39-abf3-ff95d9eb0f5e",
     "appType": "clockface",
-    "appDisplayName": "Versa-Custom",
+    "appDisplayName": "IconMinimalist",
     "iconFile": "resources/icon.png",
     "wipeColor": "",
     "requestedPermissions": [
@@ -18,7 +18,7 @@
     ],
     "i18n": {
       "en-US": {
-        "name": "Versa-Custom"
+        "name": "IconMinimalist"
       }
     },
     "defaultLanguage": "en-US"

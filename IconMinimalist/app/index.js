@@ -102,12 +102,9 @@ clock.ontick = (evt) => {
   time.text = `${hours}:${mins}`;
   
   setDay(today.getDay());
-  // pad 0 in front of day
-  if(today.getDate() > 10){
-    dateDigit.text = "0" + today.getDate();
-} else{
-    dateDigit.text = today.getDate();
-  }
+  
+  dateDigit.text = today.getDate();
+
   setMon(today.getMonth());
   
   // change icon by time
